@@ -6,12 +6,13 @@ public class Game {
 
     Controller controller;
 
-    public Game() {
-        System.out.println("Game Constructor");
-    };
+    public Game(){}
 
     public void start() {
-        this.controller = new Controller();
+        World world = new World();
+        View view = new View();
+
+        this.controller = new Controller(world, view);
         this.controller.run();
     }
 }

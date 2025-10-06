@@ -2,18 +2,12 @@ package main;
 import main.Viewable;
 
 public class View implements Viewable {
-    public View(){
-        System.out.println("View class is initialized!");
-    }
+    public View(){}
 
     public void printWelcome(){
         // Here add some Ascii art!
         //
-        System.out.println("Welcome to the Avatar Universe !");
-        System.out.println("👋 Welcome to the MVC Demo for Avatar Game !");
-        System.out.println("Type something and hit enter and I'll echo it back. Type 1 to quit.");
-
-
+        System.out.println("👋 Welcome to the Avatar Universe !");
     }
 
     public void printEndGame(){
@@ -26,7 +20,4 @@ public class View implements Viewable {
         System.out.println(input);
     };
 
-    public void okay(){
-        System.out.println("Welcome to Avatar Game the !");
-    }
 }

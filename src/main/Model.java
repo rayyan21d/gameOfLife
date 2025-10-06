@@ -3,9 +3,14 @@ package main;
 public class Model {
 
     String data;
-    public Model(){
-        System.out.println("Model Class is initialized!");
+    private Command command;
+
+    public Model() {}
+
+    public void setCommand(Command command){
+        this.command = command;
     }
+
 
     public void setData(String data) {
         this.data = data;
