@@ -4,8 +4,9 @@ import main.Scene;
 
 import java.util.Map;
 
-// Exposes methods for the World to interact with the story
-
+/**
+ * It manages the pathway a player takes or is responsible for maintaining the choices and scenes the player has traversed
+ */
 public class Story {
 
     private final Map<String, Scene> scenes;
@@ -14,16 +15,12 @@ public class Story {
     private Scene currentScene;
     private PlayerState player;
 
-    // Initializes the story based on the player type
-    // Has the graph structure in here!!
-    // combines scenes and choices in a elegant way!
-
-
     public Story(Map<String, Scene> scenes, CommandDictionary dict, AlphabeticList globalList) {
         this.scenes = scenes;
         this.dict = dict;
         this.globalList = globalList;
-        this.currentScene = scenes.getOrDefault("S01_StartGame", scenes.values().iterator().next());
+
+        this.currentScene = scenes.getOrDefault("S01_Prologue", scenes.values().iterator().next());
         this.player = new PlayerState();
         player.currentSceneId = currentScene.getId();
 
@@ -56,28 +53,50 @@ public class Story {
         if (next == null) return "Transition broken: " + nextId;
         currentScene = next;
         player.currentSceneId = currentScene.getId();
-        return currentScene.getTitle() + "\n\n" + currentScene.getDescription();
+
+        // Auto-advance if the new scene has empty transitions
+        autoAdvance();
+
+        return currentScene.getTitle() + "\n" + currentScene.getDescription();
     }
 
     private void applyEffects(String verb, String noun) {
+        // Track element choice
+        if ("choose".equals(verb)) {
+            if ("fire".equals(noun)) player.benderType = "Fire";
+            else if ("water".equals(noun)) player.benderType = "Water";
+            else if ("earth".equals(noun)) player.benderType = "Earth";
+            else if ("air".equals(noun)) player.benderType = "Air";
+        }
+
+        // Track other actions
         if ("train".equals(verb)) player.flags.add("trained");
         if ("help".equals(verb)) player.flags.add("helped");
         if ("read".equals(verb) && "scroll".equals(noun)) player.flags.add("readScroll");
-        if ("accept".equals(verb) && "newmentor".equals(noun)) player.mentor = "switched";
+        if ("attack".equals(verb)) player.flags.add("violent");
+        if ("meditate".equals(verb)) player.flags.add("spiritual");
     }
 
     public void jumpTo(String sceneId) {
         Scene s = scenes.get(sceneId);
-        if (s != null) { currentScene = s; player.currentSceneId = s.getId(); }
+        if (s != null) {
+            currentScene = s;
+            player.currentSceneId = s.getId();
+            autoAdvance();
+        }
     }
 
     public boolean save(String path) { return player.save(path); }
+
     public boolean load(String path) {
         PlayerState p = PlayerState.load(path);
         if (p == null) return false;
         this.player = p;
         Scene s = scenes.get(p.currentSceneId);
-        if (s != null) currentScene = s;
+        if (s != null) {
+            currentScene = s;
+            autoAdvance();
+        }
         return true;
     }
 
@@ -87,24 +106,31 @@ public class Story {
      */
     private void autoAdvance() {
         boolean advanced;
+        int maxLoops = 10; // Prevent infinite loops
+        int loops = 0;
+
         do {
             advanced = false;
+            loops++;
+
+            if (loops > maxLoops) {
+                System.err.println("Warning: Auto-advance loop detected at scene " + currentScene.getId());
+                break;
+            }
+
             // attempt to find an empty-key transition for current scene
             String nextId = currentScene.getNextId("", "");
             if (nextId != null) {
                 Scene next = scenes.get(nextId);
-                if (next != null) {
+                if (next != null && !next.getId().equals(currentScene.getId())) {
                     currentScene = next;
                     player.currentSceneId = currentScene.getId();
                     advanced = true;
                 } else {
-                    // transition target missing; stop and surface an error in logs if desired
+                    // transition target missing or points to self; stop
                     advanced = false;
                 }
             }
         } while (advanced);
     }
-
-
-
 }

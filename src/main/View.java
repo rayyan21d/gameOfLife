@@ -1,6 +1,10 @@
 package main;
 import main.Viewable;
 
+/**
+ * My Ideas was to extend this as a text interface from the Viewable interface and then maybe when I do a GUI
+ * The GUIInterface will handle the logic to display visuals..
+ * **/
 public class View implements Viewable {
     public View(){}
 

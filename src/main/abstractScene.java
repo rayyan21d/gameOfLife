@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public abstract class abstractScene {
 
     /**
-     * Return the human-visible choices (canonical keys).
+     * Return canonical keys
      */
     public abstract ArrayList<String> getChoices();
 
@@ -19,7 +19,7 @@ public abstract class abstractScene {
     public abstract String getDescription();
 
     /**
-     * Return the scene id (for Scene implementations).
+     * Return the scene id.
      */
     public abstract String getId();
 

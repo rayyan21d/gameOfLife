@@ -20,7 +20,8 @@ public class PlayerState implements Serializable {
 
     public PlayerState() {}
 
-    // Convenience factory
+    // Factory
+    // Stores the state of the Player, can load and save state of a player's journey
     public static PlayerState create(String name, String benderType, String startSceneId) {
         PlayerState p = new PlayerState();
         p.name = name;

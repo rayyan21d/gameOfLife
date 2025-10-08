@@ -4,372 +4,398 @@ import java.util.Map;
 import java.util.HashMap;
 
 /**
- * SceneFactory builds and returns all Scene objects keyed by their scene id.
- * Usage: Map<String, Scene> scenes = SceneFactory.buildAllScenes();
+ * Generate the story of the game here by creating scenes and connecting them with verbs and choices together
  */
 public class SceneFactory {
 
     public static Map<String, Scene> buildAllScenes() {
         Map<String, Scene> scenes = new HashMap<>();
 
-        // Helper to add scene and keep code compact
         java.util.function.Function<Scene, Scene> add = (s) -> {
             scenes.put(s.getId(), s);
             return s;
         };
 
-        // S01
-        add.apply(new Scene("S01_StartGame", "Birth of the Bender",
-                "The world awakens; you are born into an elemental lineage."));
-
-        // S02
-        add.apply(new Scene("S02_ChooseBender", "Choose Bender",
-                "Your element is revealed. The elders murmur of destiny."));
-
-        // S03
-        add.apply(new Scene("S03_MeetElder", "Naming Ceremony",
-                "An elder gives a name and blessing that will follow you."));
-
-        // S04
-        add.apply(new Scene("S04_ElementalAwakening", "Elemental Awakening",
-                "A first miracle: flame, ripple, quake, or breeze answers your will."));
-
-        // S05
-        add.apply(new Scene("S05_ChildhoodIntro", "Childhood Roots",
-                "Family and games shape your earliest memories and choices."));
-
-        // S06
-        add.apply(new Scene("S06_FirstMentor", "First Mentor Appears",
-                "A cloaked figure offers guidance and training."));
-
-        // S07
-        add.apply(new Scene("S07_PlayfulTraining", "Playful Training Grounds",
-                "You learn through play with other children, discovering empathy and clumsiness."));
-
-        // S08
-        add.apply(new Scene("S08_Discipline", "Discipline and Routines",
-                "Long hours of practice under a stern mentor build technique."));
-
-        // S09
-        add.apply(new Scene("S09_RebelPath", "Independence",
-                "You test authority, chafe at rules, and carve your own path."));
-
-        // S10
-        add.apply(new Scene("S10_EmpathyPath", "Empathy Growth",
-                "Helping villagers teaches you the weight and warmth of community."));
-
-        // S11
-        add.apply(new Scene("S11_SkillPath", "Early Skill Unlock",
-                "A new ability surfaces; it feels dangerous and exhilarating."));
-
-        // S12
-        add.apply(new Scene("S12_MentorSwitchOption", "Crossroads: New Mentor?",
-                "Another guide appears whose philosophy challenges your current one."));
-
-        // S13
-        add.apply(new Scene("S13_StreetEncounter", "Street Encounter",
-                "Thugs, merchants, and odd allies cross your path in the town streets."));
-
-        // S14
-        add.apply(new Scene("S14_Scold", "Scolding and Consequence",
-                "A parent or elder scolds you; trust is strained."));
-
-        // S15
-        add.apply(new Scene("S15_VillageCrisis", "Village Under Siege",
-                "Flames and smoke—your village is attacked and everyone looks to you."));
-
-        // S16
-        add.apply(new Scene("S16_Aftermath", "Aftermath",
-                "Dust settles; choices create long shadows and new responsibilities."));
-
-        // S17
-        add.apply(new Scene("S17_HonorPath", "Honor and Reputation",
-                "Your reputation grows—some call you hero, others call you enemy."));
-
-        // S18
-        add.apply(new Scene("S18_SurvivalPath", "Survival and Flight",
-                "Alone in the wild, you learn to survive, bargain, and adapt."));
-
-        // S19
-        add.apply(new Scene("S19_CompassionPath", "Protect and Heal",
-                "You shelter and heal the vulnerable, gaining loyal allies."));
-
-        // S20
-        add.apply(new Scene("S20_SelfDiscoveryStart", "Journey Begins",
-                "You leave home in search of truth and a deeper mastery."));
-
-        // S21
-        add.apply(new Scene("S21_NewMentorArc", "New Mentor / Hybrid Teachings",
-                "A new mentor offers a hybrid technique that reshapes your training."));
-
-        // S22
-        add.apply(new Scene("S22_TrainingArc", "Focused Training",
-                "Relentless drills, ancient philosophies, and severe trials."));
-
-        // S23
-        add.apply(new Scene("S23_SpiritEncounter", "Spirit World Glimpse",
-                "A brush with the spirit world leaves you changed and unsettled."));
-
-        // S24
-        add.apply(new Scene("S24_InnerVision", "Meditative Insight",
-                "In meditation you glimpse prophecy, old wounds, or hidden power."));
-
-        // S25
-        add.apply(new Scene("S25_AncientScrolls", "Forbidden Knowledge",
-                "An ancient scroll hums; knowledge promises power or corruption."));
-
-        // S26
-        add.apply(new Scene("S26_TrialOfCourage", "Trial of Courage",
-                "A trial measures your resolve, skill, and the choices you will make."));
-
-        // S27
-        add.apply(new Scene("S27_InfiltrateFortress", "Infiltrate Enemy Fortress",
-                "Stealth, deceit, or direct assault: choose your way inside the enemy hold."));
-
-        // S28
-        add.apply(new Scene("S28_CleanPath", "Steady Growth Path",
-                "A steady, disciplined path avoids corruption and yields slow strength."));
-
-        // S29
-        add.apply(new Scene("S29_PowerUnlockOrCorrupt", "Power or Corruption",
-                "Embrace power and risk corruption, or restrain it and grow slowly."));
-
-        // S30
-        add.apply(new Scene("S30_FinalBattlePrep", "Final Preparations",
-                "Rally allies, prepare strategy, and set traps before the final fight."));
-
-        // S31
-        add.apply(new Scene("S31_FinalBattleDialogue", "Confrontation Dialogue",
-                "Face the main antagonist: words may avert bloodshed, or steel must decide fate."));
-
-        // S32
-        add.apply(new Scene("S32_DefeatOrVictory", "Final Battle Outcome",
-                "Outcomes diverge: victory, defeat, or a cost so high it changes everything."));
-
-        // S33
-        add.apply(new Scene("S33_EndingPeace", "Peaceful Resolution",
-                "A nonviolent resolution where negotiation and sacrifice restore balance."));
-
-        // S34
-        add.apply(new Scene("S34_SacrificeEnding", "Heroic Sacrifice",
-                "A selfless choice that may seal the fate of the world or redeem a soul."));
-
-        // S35
-        add.apply(new Scene("S35_VictoryPath", "Victory and Legacy",
-                "Triumph, choices about leadership, and the forging of a new legacy."));
-
-        // S36
-        add.apply(new Scene("S36_LossPath", "Exile and Loss",
-                "Defeat’s wake: exile, plots for revenge, or the road to humility."));
-
-        // S37
-        add.apply(new Scene("S37_NewLeader", "New Leader Emerges",
-                "You rebuild, reform, and decide what kind of leader you will be."));
-
-        // S38
-        add.apply(new Scene("S38_EpilogueReflection", "Reflection and Peace",
-                "Quiet years of reflection, teaching, and the seeds of a new era."));
-
-        // S39
-        add.apply(new Scene("S39_ReplayabilityStart", "Replay Decision",
-                "Decide whether to restart, change your bender, or pursue alternate endings."));
-
-        // S40
-        add.apply(new Scene("S40_TrueEnding", "Bridge Between Worlds",
-                "A rare ending: you become the bridge between mortal and spirit realms."));
-
-        // === Wire transitions: addChoice(verb, noun, nextSceneId) ===
-        // S01
-        scenes.get("S01_StartGame").addChoice("choose", "bender", "S02_ChooseBender");
-        scenes.get("S01_StartGame").addChoice("meet", "elder", "S03_MeetElder");
-
-        // S02
-        scenes.get("S02_ChooseBender").addChoice("accept", "fire", "S04_ElementalAwakening");
-        scenes.get("S02_ChooseBender").addChoice("accept", "water", "S04_ElementalAwakening");
-        scenes.get("S02_ChooseBender").addChoice("accept", "earth", "S04_ElementalAwakening");
-        scenes.get("S02_ChooseBender").addChoice("accept", "air", "S04_ElementalAwakening");
-
-        // S03
-        scenes.get("S03_MeetElder").addChoice("listen", "elder", "S04_ElementalAwakening");
-        scenes.get("S03_MeetElder").addChoice("question", "elder", "S05_ChildhoodIntro");
-
-        // S04
-        scenes.get("S04_ElementalAwakening").addChoice("meditate", "element", "S06_FirstMentor");
-        scenes.get("S04_ElementalAwakening").addChoice("resist", "element", "S05_ChildhoodIntro");
-
-        // S05
-        scenes.get("S05_ChildhoodIntro").addChoice("play", "friends", "S07_PlayfulTraining");
-        scenes.get("S05_ChildhoodIntro").addChoice("train", "teacher", "S08_Discipline");
-        scenes.get("S05_ChildhoodIntro").addChoice("rebel", "rules", "S09_RebelPath");
-
-        // S06
-        scenes.get("S06_FirstMentor").addChoice("follow", "mentor", "S08_Discipline");
-        scenes.get("S06_FirstMentor").addChoice("decline", "mentor", "S09_RebelPath");
-        scenes.get("S06_FirstMentor").addChoice("seek", "other", "S12_MentorSwitchOption");
-
-        // S07
-        scenes.get("S07_PlayfulTraining").addChoice("help", "friend", "S10_EmpathyPath");
-        scenes.get("S07_PlayfulTraining").addChoice("prank", "neighbor", "S09_RebelPath");
-        scenes.get("S07_PlayfulTraining").addChoice("practice", "skill", "S08_Discipline");
-
-        // S08
-        scenes.get("S08_Discipline").addChoice("obey", "mentor", "S11_SkillPath");
-        scenes.get("S08_Discipline").addChoice("question", "lesson", "S12_MentorSwitchOption");
-        scenes.get("S08_Discipline").addChoice("assist", "junior", "S10_EmpathyPath");
-
-        // S09
-        scenes.get("S09_RebelPath").addChoice("run", "town", "S13_StreetEncounter");
-        scenes.get("S09_RebelPath").addChoice("steal", "fruit", "S14_Scold");
-        scenes.get("S09_RebelPath").addChoice("challenge", "peer", "S13_StreetEncounter");
-
-        // S10
-        scenes.get("S10_EmpathyPath").addChoice("comfort", "sick", "S11_SkillPath");
-        scenes.get("S10_EmpathyPath").addChoice("share", "food", "S11_SkillPath");
-        scenes.get("S10_EmpathyPath").addChoice("teach", "child", "S12_MentorSwitchOption");
-
-        // S11
-        scenes.get("S11_SkillPath").addChoice("test", "ability", "S15_VillageCrisis");
-        scenes.get("S11_SkillPath").addChoice("refine", "technique", "S16_Aftermath");
-        scenes.get("S11_SkillPath").addChoice("boast", "peer", "S09_RebelPath");
-
-        // S12
-        scenes.get("S12_MentorSwitchOption").addChoice("accept", "newmentor", "S21_NewMentorArc");
-        scenes.get("S12_MentorSwitchOption").addChoice("combine", "teachings", "S21_NewMentorArc");
-        scenes.get("S12_MentorSwitchOption").addChoice("stay", "current", "S11_SkillPath");
-
-        // S13
-        scenes.get("S13_StreetEncounter").addChoice("fight", "thugs", "S15_VillageCrisis");
-        scenes.get("S13_StreetEncounter").addChoice("bargain", "merchant", "S10_EmpathyPath");
-        scenes.get("S13_StreetEncounter").addChoice("flee", "alley", "S16_Aftermath");
-
-        // S14
-        scenes.get("S14_Scold").addChoice("apologize", "parent", "S10_EmpathyPath");
-        scenes.get("S14_Scold").addChoice("defy", "parent", "S09_RebelPath");
-
-        // S15
-        scenes.get("S15_VillageCrisis").addChoice("defend", "village", "S17_HonorPath");
-        scenes.get("S15_VillageCrisis").addChoice("evacuate", "villagers", "S18_SurvivalPath");
-        scenes.get("S15_VillageCrisis").addChoice("sabotage", "enemy", "S19_CompassionPath");
-
-        // S16
-        scenes.get("S16_Aftermath").addChoice("inspect", "ruins", "S20_SelfDiscoveryStart");
-        scenes.get("S16_Aftermath").addChoice("counsel", "elder", "S20_SelfDiscoveryStart");
-        scenes.get("S16_Aftermath").addChoice("hunt", "loss", "S09_RebelPath");
-
-        // S17
-        scenes.get("S17_HonorPath").addChoice("recruit", "ally", "S20_SelfDiscoveryStart");
-        scenes.get("S17_HonorPath").addChoice("parade", "village", "S22_TrainingArc");
-        scenes.get("S17_HonorPath").addChoice("duel", "enemy", "S27_InfiltrateFortress");
-
-        // S18
-        scenes.get("S18_SurvivalPath").addChoice("hide", "forest", "S20_SelfDiscoveryStart");
-        scenes.get("S18_SurvivalPath").addChoice("bargain", "stranger", "S23_SpiritEncounter");
-        scenes.get("S18_SurvivalPath").addChoice("forge", "weapon", "S22_TrainingArc");
-
-        // S19
-        scenes.get("S19_CompassionPath").addChoice("heal", "wounded", "S21_NewMentorArc");
-        scenes.get("S19_CompassionPath").addChoice("carry", "elder", "S21_NewMentorArc");
-        scenes.get("S19_CompassionPath").addChoice("shelter", "children", "S22_TrainingArc");
-
-        // S20
-        scenes.get("S20_SelfDiscoveryStart").addChoice("walk", "forest", "S23_SpiritEncounter");
-        scenes.get("S20_SelfDiscoveryStart").addChoice("meditate", "shrines", "S24_InnerVision");
-        scenes.get("S20_SelfDiscoveryStart").addChoice("seek", "ruins", "S25_AncientScrolls");
-
-        // S21
-        scenes.get("S21_NewMentorArc").addChoice("learn", "technique", "S22_TrainingArc");
-        scenes.get("S21_NewMentorArc").addChoice("debate", "philosophy", "S24_InnerVision");
-        scenes.get("S21_NewMentorArc").addChoice("switch", "mentor", "S12_MentorSwitchOption");
-
-        // S22
-        scenes.get("S22_TrainingArc").addChoice("practice", "element", "S26_TrialOfCourage");
-        scenes.get("S22_TrainingArc").addChoice("study", "scroll", "S25_AncientScrolls");
-        scenes.get("S22_TrainingArc").addChoice("challenge", "trial", "S26_TrialOfCourage");
-
-        // S23
-        scenes.get("S23_SpiritEncounter").addChoice("communicate", "spirit", "S24_InnerVision");
-        scenes.get("S23_SpiritEncounter").addChoice("flee", "spirit", "S20_SelfDiscoveryStart");
-        scenes.get("S23_SpiritEncounter").addChoice("bargain", "spirit", "S29_PowerUnlockOrCorrupt");
-
-        // S24
-        scenes.get("S24_InnerVision").addChoice("accept", "vision", "S25_AncientScrolls");
-        scenes.get("S24_InnerVision").addChoice("reject", "vision", "S22_TrainingArc");
-        scenes.get("S24_InnerVision").addChoice("record", "insight", "S25_AncientScrolls");
-
-        // S25
-        scenes.get("S25_AncientScrolls").addChoice("read", "scroll", "S29_PowerUnlockOrCorrupt");
-        scenes.get("S25_AncientScrolls").addChoice("burn", "scroll", "S28_CleanPath");
-        scenes.get("S25_AncientScrolls").addChoice("hide", "scroll", "S22_TrainingArc");
-
-        // S26
-        scenes.get("S26_TrialOfCourage").addChoice("succeed", "trial", "S27_InfiltrateFortress");
-        scenes.get("S26_TrialOfCourage").addChoice("fail", "trial", "S28_CleanPath");
-        scenes.get("S26_TrialOfCourage").addChoice("cheat", "trial", "S36_LossPath");
-
-        // S27
-        scenes.get("S27_InfiltrateFortress").addChoice("sneak", "guards", "S30_FinalBattlePrep");
-        scenes.get("S27_InfiltrateFortress").addChoice("fight", "patrol", "S30_FinalBattlePrep");
-        scenes.get("S27_InfiltrateFortress").addChoice("parley", "captain", "S31_FinalBattleDialogue");
-
-        // S28
-        scenes.get("S28_CleanPath").addChoice("train", "steady", "S22_TrainingArc");
-        scenes.get("S28_CleanPath").addChoice("mentor", "assist", "S21_NewMentorArc");
-        scenes.get("S28_CleanPath").addChoice("travel", "town", "S20_SelfDiscoveryStart");
-
-        // S29
-        scenes.get("S29_PowerUnlockOrCorrupt").addChoice("embrace", "power", "S30_FinalBattlePrep");
-        scenes.get("S29_PowerUnlockOrCorrupt").addChoice("restrain", "power", "S28_CleanPath");
-        scenes.get("S29_PowerUnlockOrCorrupt").addChoice("test", "skill", "S26_TrialOfCourage");
-
-        // S30
-        scenes.get("S30_FinalBattlePrep").addChoice("recruit", "allies", "S31_FinalBattleDialogue");
-        scenes.get("S30_FinalBattlePrep").addChoice("train", "army", "S31_FinalBattleDialogue");
-        scenes.get("S30_FinalBattlePrep").addChoice("sabotage", "weapons", "S31_FinalBattleDialogue");
-
-        // S31
-        scenes.get("S31_FinalBattleDialogue").addChoice("negotiate", "enemy", "S33_EndingPeace");
-        scenes.get("S31_FinalBattleDialogue").addChoice("duel", "boss", "S32_DefeatOrVictory");
-        scenes.get("S31_FinalBattleDialogue").addChoice("sacrifice", "ally", "S34_SacrificeEnding");
-
-        // S32
-        scenes.get("S32_DefeatOrVictory").addChoice("win", "battle", "S35_VictoryPath");
-        scenes.get("S32_DefeatOrVictory").addChoice("lose", "battle", "S36_LossPath");
-
-        // S33
-        scenes.get("S33_EndingPeace").addChoice("unify", "nations", "S35_VictoryPath");
-        scenes.get("S33_EndingPeace").addChoice("rebuild", "village", "S35_VictoryPath");
-
-        // S34
-        scenes.get("S34_SacrificeEnding").addChoice("accept", "death", "S38_EpilogueReflection");
-        scenes.get("S34_SacrificeEnding").addChoice("refuse", "death", "S32_DefeatOrVictory");
-
-        // S35
-        scenes.get("S35_VictoryPath").addChoice("lead", "nation", "S37_NewLeader");
-        scenes.get("S35_VictoryPath").addChoice("teach", "newbender", "S37_NewLeader");
-        scenes.get("S35_VictoryPath").addChoice("travel", "world", "S39_ReplayabilityStart");
-
-        // S36
-        scenes.get("S36_LossPath").addChoice("wander", "lands", "S32_DefeatOrVictory");
-        scenes.get("S36_LossPath").addChoice("plot", "revenge", "S27_InfiltrateFortress");
-        scenes.get("S36_LossPath").addChoice("accept", "humility", "S38_EpilogueReflection");
-
-        // S37
-        scenes.get("S37_NewLeader").addChoice("reform", "law", "S38_EpilogueReflection");
-        scenes.get("S37_NewLeader").addChoice("invest", "culture", "S38_EpilogueReflection");
-        scenes.get("S37_NewLeader").addChoice("found", "academy", "S39_ReplayabilityStart");
-
-        // S38
-        scenes.get("S38_EpilogueReflection").addChoice("mentor", "apprentice", "S39_ReplayabilityStart");
-        scenes.get("S38_EpilogueReflection").addChoice("write", "history", "S39_ReplayabilityStart");
-        scenes.get("S38_EpilogueReflection").addChoice("retire", "home", "S40_TrueEnding");
-
-        // S39
-        scenes.get("S39_ReplayabilityStart").addChoice("restart", "game", "S01_StartGame");
-        scenes.get("S39_ReplayabilityStart").addChoice("change", "bender", "S02_ChooseBender");
-        scenes.get("S39_ReplayabilityStart").addChoice("alternate", "ending", "S34_SacrificeEnding");
-
-        // S40
-        scenes.get("S40_TrueEnding").addChoice("ascend", "avatar", "S38_EpilogueReflection");
+        // ============ PROLOGUE ============
+
+        Scene s01 = add.apply(new Scene("S01_Prologue", "🌏 The Four Nations",
+                "Long ago, the four nations lived in harmony. Then everything changed.\n" +
+                        "You are born with the gift of bending. Your destiny awaits...\n"));
+        s01.addChoice("", "", "S02_ChooseElement");
+
+        // ============ ELEMENT SELECTION ============
+
+        add.apply(new Scene("S02_ChooseElement", "⚡ Choose Your Path",
+                "The elders gather. Four paths shimmer before you:\n\n" +
+                        "🔥 FIRE - Forge blazing infernos, lightning strikes, explosive power\n" +
+                        "💧 WATER - Control tides, freeze enemies, heal the wounded\n" +
+                        "🌍 EARTH - Shake mountains, forge metal, sense vibrations\n" +
+                        "💨 AIR - Summon tornadoes, fly on wind, create vacuums\n\n" +
+                        "Which element resonates with your soul?"));
+        scenes.get("S02_ChooseElement").addChoice("choose", "fire", "S03_FireAwakening");
+        scenes.get("S02_ChooseElement").addChoice("choose", "water", "S03_WaterAwakening");
+        scenes.get("S02_ChooseElement").addChoice("choose", "earth", "S03_EarthAwakening");
+        scenes.get("S02_ChooseElement").addChoice("choose", "air", "S03_AirAwakening");
+
+        // ============ ELEMENT-SPECIFIC AWAKENINGS ============
+
+        Scene fireAwaken = add.apply(new Scene("S03_FireAwakening", "🔥 Flames Ignite Within",
+                "WHOOSH! Fire erupts from your fingertips!\n" +
+                        "The flames dance wildly - dangerous, beautiful, alive.\n" +
+                        "You are a Firebender. Passion and fury flow through your veins.\n" +
+                        "The elders watch nervously. Fire destroyed much in the great war..."));
+        fireAwaken.addChoice("", "", "S04_FireTraining");
+
+        Scene waterAwaken = add.apply(new Scene("S03_WaterAwakening", "💧 The Tide Answers",
+                "The water rises at your command, swirling in graceful arcs.\n" +
+                        "You feel every ripple, every current, every drop.\n" +
+                        "You are a Waterbender. Adaptability and healing are your gifts.\n" +
+                        "The tribe celebrates - the ocean has blessed another warrior."));
+        waterAwaken.addChoice("", "", "S04_WaterTraining");
+
+        Scene earthAwaken = add.apply(new Scene("S03_EarthAwakening", "🌍 Stone Trembles",
+                "CRACK! The ground splits beneath your feet!\n" +
+                        "Rock responds to your will, solid and unyielding.\n" +
+                        "You are an Earthbender. Strength and endurance define you.\n" +
+                        "The clan roars approval - the earth itself has chosen you."));
+        earthAwaken.addChoice("", "", "S04_EarthTraining");
+
+        Scene airAwaken = add.apply(new Scene("S03_AirAwakening", "💨 Wind Rises",
+                "The breeze swirls around you, lifting you off your feet!\n" +
+                        "Air flows freely, light and boundless.\n" +
+                        "You are an Airbender. Freedom and wisdom are your path.\n" +
+                        "The monks smile serenely - another nomad joins the sky."));
+        airAwaken.addChoice("", "", "S04_AirTraining");
+
+        // ============ ELEMENT-SPECIFIC TRAINING ============
+
+        // FIRE Training
+        add.apply(new Scene("S04_FireTraining", "🔥 First Lessons: Control the Flame",
+                "Master Roku demonstrates breathing techniques.\n" +
+                        "'Fire comes from the breath,' he says. 'Rage makes it wild. Control makes it deadly.'\n" +
+                        "Before you: three training dummies. How will you practice?"));
+        scenes.get("S04_FireTraining").addChoice("attack", "torch", "S05_AggressiveFire");
+        scenes.get("S04_FireTraining").addChoice("meditate", "", "S06_BalancedFire");
+        scenes.get("S04_FireTraining").addChoice("inspect", "scroll", "S07_AncientFire");
+
+        // WATER Training
+        add.apply(new Scene("S04_WaterTraining", "💧 First Lessons: Flow Like Water",
+                "Master Katara shows you the basic forms.\n" +
+                        "'Water is the element of change,' she explains. 'We can heal or harm.'\n" +
+                        "The training pool shimmers. What calls to you?"));
+        scenes.get("S04_WaterTraining").addChoice("help", "monk", "S08_HealingWater");
+        scenes.get("S04_WaterTraining").addChoice("attack", "enemy", "S09_CombatWater");
+        scenes.get("S04_WaterTraining").addChoice("meditate", "", "S10_SpiritWater");
+
+        // EARTH Training
+        add.apply(new Scene("S04_EarthTraining", "🌍 First Lessons: Stand Your Ground",
+                "Master Toph pounds the earth with her fists.\n" +
+                        "'Earth is the element of substance,' she grunts. 'Be stubborn. Be strong.'\n" +
+                        "Boulders surround you. Time to move some rock."));
+        scenes.get("S04_EarthTraining").addChoice("attack", "statue", "S11_AggressiveEarth");
+        scenes.get("S04_EarthTraining").addChoice("inspect", "ruins", "S12_MetalBending");
+        scenes.get("S04_EarthTraining").addChoice("meditate", "", "S13_SeismicSense");
+
+        // AIR Training
+        add.apply(new Scene("S04_AirTraining", "💨 First Lessons: Freedom in Motion",
+                "Master Aang floats effortlessly above you.\n" +
+                        "'Air is the element of freedom,' he laughs. 'Don't think. Just be!'\n" +
+                        "The mountain peak awaits. How will you master the wind?"));
+        scenes.get("S04_AirTraining").addChoice("climb", "gate", "S14_SpiritualAir");
+        scenes.get("S04_AirTraining").addChoice("help", "village", "S15_PacifistAir");
+        scenes.get("S04_AirTraining").addChoice("attack", "enemy", "S16_WarriorAir");
+
+        // ============ FIRE PATHS ============
+
+        add.apply(new Scene("S05_AggressiveFire", "🔥 Path of the Dragon",
+                "You unleash a torrent of flames! The dummies explode!\n" +
+                        "Power surges through you. More. You want MORE.\n" +
+                        "Roku frowns. 'Careful. Fire is a weapon, not a toy.'"));
+        scenes.get("S05_AggressiveFire").addChoice("grab", "torch", "S17_LightningBending");
+        scenes.get("S05_AggressiveFire").addChoice("flee", "", "S18_FireBandit");
+        scenes.get("S05_AggressiveFire").addChoice("talk", "mentor", "S06_BalancedFire");
+
+        add.apply(new Scene("S06_BalancedFire", "🔥 Path of the Sun Warrior",
+                "You breathe. In and out. The flame follows your breath.\n" +
+                        "Small. Controlled. Beautiful. This is mastery.\n" +
+                        "Roku nods approvingly. 'Now you understand.'"));
+        scenes.get("S06_BalancedFire").addChoice("help", "village", "S19_FireHealer");
+        scenes.get("S06_BalancedFire").addChoice("train", "", "S17_LightningBending");
+        scenes.get("S06_BalancedFire").addChoice("read", "scroll", "S07_AncientFire");
+
+        add.apply(new Scene("S07_AncientFire", "🔥 Forbidden: Combustion",
+                "The scroll depicts a technique lost for centuries: combustion bending.\n" +
+                        "Concentrate fire into a single point and... BOOM.\n" +
+                        "This power could level cities. Do you dare learn it?"));
+        scenes.get("S07_AncientFire").addChoice("read", "scroll", "S20_DarkFire");
+        scenes.get("S07_AncientFire").addChoice("meditate", "", "S06_BalancedFire");
+
+        // ============ WATER PATHS ============
+
+        add.apply(new Scene("S08_HealingWater", "💧 Path of the Healer",
+                "You place glowing water on the monk's wounds.\n" +
+                        "The glow spreads. Flesh knits. Pain fades.\n" +
+                        "Katara smiles. 'You have the gift. Cherish it.'"));
+        scenes.get("S08_HealingWater").addChoice("help", "allies", "S21_MasterHealer");
+        scenes.get("S08_HealingWater").addChoice("walk", "forest", "S22_SpiritOasis");
+        scenes.get("S08_HealingWater").addChoice("train", "", "S09_CombatWater");
+
+        add.apply(new Scene("S09_CombatWater", "💧 Path of the Northern Warrior",
+                "Ice shards form at your command. Water whips crack like thunder.\n" +
+                        "The practice dummy freezes solid, then shatters.\n" +
+                        "Katara watches carefully. 'Power without wisdom is dangerous.'"));
+        scenes.get("S09_CombatWater").addChoice("attack", "enemy", "S23_BloodBending");
+        scenes.get("S09_CombatWater").addChoice("help", "village", "S08_HealingWater");
+        scenes.get("S09_CombatWater").addChoice("inspect", "scroll", "S23_BloodBending");
+
+        add.apply(new Scene("S10_SpiritWater", "💧 Path of the Moon Spirit",
+                "You meditate by the water. The moon rises.\n" +
+                        "Suddenly, you feel it - the pull of the tide in your very blood.\n" +
+                        "The spirits whisper secrets of power beyond bending..."));
+        scenes.get("S10_SpiritWater").addChoice("talk", "monk", "S22_SpiritOasis");
+        scenes.get("S10_SpiritWater").addChoice("meditate", "", "S24_AvatarState");
+        scenes.get("S10_SpiritWater").addChoice("help", "village", "S08_HealingWater");
+
+        // ============ EARTH PATHS ============
+
+        add.apply(new Scene("S11_AggressiveEarth", "🌍 Path of the Boulder",
+                "WHAM! Your fist meets stone. The statue crumbles!\n" +
+                        "Rock flies. Dust swirls. You feel POWERFUL.\n" +
+                        "Toph grins. 'Now you're getting it!'"));
+        scenes.get("S11_AggressiveEarth").addChoice("attack", "gate", "S25_LavaBinding");
+        scenes.get("S11_AggressiveEarth").addChoice("walk", "ruins", "S12_MetalBending");
+        scenes.get("S11_AggressiveEarth").addChoice("train", "", "S26_ProBender");
+
+        add.apply(new Scene("S12_MetalBending", "🌍 Discovery: The Metal Clan",
+                "In the ruins, you find twisted metal. Ancient armor.\n" +
+                        "You reach out. The metal... responds? Impossible!\n" +
+                        "Toph's voice echoes: 'Metal is just earth. Purified earth.'"));
+        scenes.get("S12_MetalBending").addChoice("grab", "gate", "S27_MetalMaster");
+        scenes.get("S12_MetalBending").addChoice("inspect", "ruins", "S28_SandBending");
+        scenes.get("S12_MetalBending").addChoice("help", "allies", "S26_ProBender");
+
+        add.apply(new Scene("S13_SeismicSense", "🌍 Path of the Blind Bandit",
+                "You close your eyes. Feel the vibrations.\n" +
+                        "Every footstep, every heartbeat, every breath - you sense it all.\n" +
+                        "This is true earthbending. Seeing without sight."));
+        scenes.get("S13_SeismicSense").addChoice("meditate", "", "S24_AvatarState");
+        scenes.get("S13_SeismicSense").addChoice("help", "village", "S29_EarthGuardian");
+        scenes.get("S13_SeismicSense").addChoice("walk", "forest", "S30_SwampBender");
+
+        // ============ AIR PATHS ============
+
+        add.apply(new Scene("S14_SpiritualAir", "💨 Path of the Monk",
+                "You climb without hands, lifted by wind itself.\n" +
+                        "At the peak, you touch the sky. Peace fills you.\n" +
+                        "Aang appears beside you. 'You're learning detachment. Good.'"));
+        scenes.get("S14_SpiritualAir").addChoice("meditate", "", "S24_AvatarState");
+        scenes.get("S14_SpiritualAir").addChoice("talk", "monk", "S31_SkyBison");
+        scenes.get("S14_SpiritualAir").addChoice("help", "village", "S15_PacifistAir");
+
+        add.apply(new Scene("S15_PacifistAir", "💨 Path of Peace",
+                "You use air to gently guide, never to harm.\n" +
+                        "Villagers smile as you help rebuild their homes.\n" +
+                        "Aang's teachings: 'All life is sacred. Even our enemies.'"));
+        scenes.get("S15_PacifistAir").addChoice("help", "allies", "S32_AirNomad");
+        scenes.get("S15_PacifistAir").addChoice("walk", "village", "S33_Diplomat");
+        scenes.get("S15_PacifistAir").addChoice("meditate", "", "S14_SpiritualAir");
+
+        add.apply(new Scene("S16_WarriorAir", "💨 Path of the Storm",
+                "Air CAN be a weapon. You create a vacuum. Your target gasps.\n" +
+                        "Aang looks troubled. 'This breaks our code...'\n" +
+                        "But sometimes mercy is weakness. Sometimes."));
+        scenes.get("S16_WarriorAir").addChoice("attack", "enemy", "S34_FlightMaster");
+        scenes.get("S16_WarriorAir").addChoice("flee", "", "S15_PacifistAir");
+        scenes.get("S16_WarriorAir").addChoice("train", "", "S34_FlightMaster");
+
+        // ============ ADVANCED FIRE ABILITIES ============
+
+        add.apply(new Scene("S17_LightningBending", "⚡ Lightning Generation",
+                "You separate positive from negative. The energy builds.\n" +
+                        "CRACK! Lightning erupts from your fingertips!\n" +
+                        "The most dangerous firebending technique. You've mastered it."));
+        scenes.get("S17_LightningBending").addChoice("attack", "enemy", "S35_FinalBattle");
+        scenes.get("S17_LightningBending").addChoice("help", "allies", "S36_WarPrep");
+        scenes.get("S17_LightningBending").addChoice("meditate", "", "S24_AvatarState");
+
+        add.apply(new Scene("S18_FireBandit", "🔥 The Outlaw Life",
+                "You flee from discipline. Freedom! Power without rules!\n" +
+                        "But bandits find you. 'Join us,' they say. 'Burn what you want.'"));
+        scenes.get("S18_FireBandit").addChoice("attack", "enemy", "S20_DarkFire");
+        scenes.get("S18_FireBandit").addChoice("flee", "", "S19_FireHealer");
+        scenes.get("S18_FireBandit").addChoice("talk", "enemy", "S37_Redemption");
+
+        add.apply(new Scene("S19_FireHealer", "🔥 The Sun's Gift",
+                "Few know: fire can heal. Not through water's magic, but through warmth.\n" +
+                        "You use flames to soothe, to comfort, to restore.\n" +
+                        "This is fire at its purest - the gift of the sun."));
+        scenes.get("S19_FireHealer").addChoice("help", "allies", "S36_WarPrep");
+        scenes.get("S19_FireHealer").addChoice("walk", "village", "S33_Diplomat");
+
+        add.apply(new Scene("S20_DarkFire", "🔥💀 Combustion Mastery",
+                "You focus fire into a single point on your forehead.\n" +
+                        "Your mind becomes the weapon. BOOM. Explosion at a distance.\n" +
+                        "Ultimate power. Ultimate corruption."));
+        scenes.get("S20_DarkFire").addChoice("attack", "enemy", "S38_TyrantEnding");
+        scenes.get("S20_DarkFire").addChoice("meditate", "", "S37_Redemption");
+
+        // ============ ADVANCED WATER ABILITIES ============
+
+        add.apply(new Scene("S21_MasterHealer", "💧 Hospital of Hope",
+                "Your healing grows legendary. The wounded come from everywhere.\n" +
+                        "You mend bones, cure disease, even restore lost memories.\n" +
+                        "They call you the greatest healer since Avatar Aang."));
+        scenes.get("S21_MasterHealer").addChoice("help", "allies", "S36_WarPrep");
+        scenes.get("S21_MasterHealer").addChoice("walk", "forest", "S22_SpiritOasis");
+
+        add.apply(new Scene("S22_SpiritOasis", "💧 The Spirit World Beckons",
+                "The water glows with otherworldly light.\n" +
+                        "Spirits emerge - neither good nor evil, simply... other.\n" +
+                        "They offer you a choice: remain human, or transcend..."));
+        scenes.get("S22_SpiritOasis").addChoice("talk", "monk", "S24_AvatarState");
+        scenes.get("S22_SpiritOasis").addChoice("meditate", "", "S40_EnlightenmentEnding");
+
+        add.apply(new Scene("S23_BloodBending", "💧🩸 Forbidden: Blood Control",
+                "Under the full moon, you feel it - the water in living bodies.\n" +
+                        "You could control them. Puppets of flesh and blood.\n" +
+                        "The most forbidden technique. The darkest power."));
+        scenes.get("S23_BloodBending").addChoice("attack", "enemy", "S38_TyrantEnding");
+        scenes.get("S23_BloodBending").addChoice("flee", "", "S37_Redemption");
+
+        // ============ AVATAR STATE (CONVERGENCE POINT) ============
+
+        add.apply(new Scene("S24_AvatarState", "✨ The Bridge Between Worlds",
+                "All elements flow through you. Past lives awaken.\n" +
+                        "Fire. Water. Earth. Air. All one. All yours.\n" +
+                        "You are no longer just a bender. You are the Avatar."));
+        scenes.get("S24_AvatarState").addChoice("help", "allies", "S36_WarPrep");
+        scenes.get("S24_AvatarState").addChoice("meditate", "", "S40_EnlightenmentEnding");
+        scenes.get("S24_AvatarState").addChoice("talk", "enemy", "S39_PeaceEnding");
+
+        // ============ ADVANCED EARTH ABILITIES ============
+
+        add.apply(new Scene("S25_LavaBending", "🌋 Path of Fire and Earth",
+                "You heat the earth until it melts. Lava flows at your command!\n" +
+                        "The rarest earthbending art. Destructive. Beautiful. Terrifying."));
+        scenes.get("S25_LavaBending").addChoice("attack", "enemy", "S35_FinalBattle");
+        scenes.get("S25_LavaBending").addChoice("help", "village", "S29_EarthGuardian");
+
+        add.apply(new Scene("S26_ProBender", "🌍 Arena Champion",
+                "The crowd roars! You dominate the Pro-Bending arena!\n" +
+                        "Fame, fortune, glory - all yours!"));
+        scenes.get("S26_ProBender").addChoice("help", "allies", "S36_WarPrep");
+        scenes.get("S26_ProBender").addChoice("walk", "village", "S33_Diplomat");
+
+        add.apply(new Scene("S27_MetalMaster", "🌍 Steel Guardian",
+                "Metal bends to your will. Armor. Weapons. Structures.\n" +
+                        "You are one of the few metal benders in existence."));
+        scenes.get("S27_MetalMaster").addChoice("help", "allies", "S36_WarPrep");
+        scenes.get("S27_MetalMaster").addChoice("attack", "enemy", "S35_FinalBattle");
+
+        add.apply(new Scene("S28_SandBending", "🌍 Desert Phantom",
+                "The sand becomes your weapon and shield.\n" +
+                        "You create storms, sculptures, entire buildings from sand alone."));
+        scenes.get("S28_SandBending").addChoice("walk", "ruins", "S30_SwampBender");
+        scenes.get("S28_SandBending").addChoice("help", "village", "S29_EarthGuardian");
+
+        add.apply(new Scene("S29_EarthGuardian", "🌍 Protector of the Land",
+                "You use earthbending to protect, not destroy.\n" +
+                        "Walls rise to shield the innocent. Earth becomes sanctuary."));
+        scenes.get("S29_EarthGuardian").addChoice("help", "allies", "S36_WarPrep");
+        scenes.get("S29_EarthGuardian").addChoice("talk", "allies", "S33_Diplomat");
+
+        add.apply(new Scene("S30_SwampBender", "🌍💧 The Swamp's Secret",
+                "In the living swamp, you learn to bend the water in plants.\n" +
+                        "Vines become weapons. Trees become allies.\n" +
+                        "Earth and water blur into one living technique."));
+        scenes.get("S30_SwampBender").addChoice("help", "village", "S29_EarthGuardian");
+        scenes.get("S30_SwampBender").addChoice("walk", "forest", "S22_SpiritOasis");
+
+        // ============ ADVANCED AIR ABILITIES ============
+
+        add.apply(new Scene("S31_SkyBison", "💨 Bond with the Sky",
+                "A sky bison chooses you! The ancient bond forms.\n" +
+                        "You and your companion soar across nations.\n" +
+                        "Together, you are unstoppable."));
+        scenes.get("S31_SkyBison").addChoice("help", "allies", "S32_AirNomad");
+        scenes.get("S31_SkyBison").addChoice("walk", "village", "S33_Diplomat");
+
+        add.apply(new Scene("S32_AirNomad", "💨 Keeper of Peace",
+                "You travel, helping all. Never taking sides.\n" +
+                        "The airbender way: balance, neutrality, compassion."));
+        scenes.get("S32_AirNomad").addChoice("help", "allies", "S36_WarPrep");
+        scenes.get("S32_AirNomad").addChoice("talk", "enemy", "S39_PeaceEnding");
+
+        add.apply(new Scene("S33_Diplomat", "🕊️ Voice of Reason",
+                "Your reputation as peacemaker grows.\n" +
+                        "Nations seek your counsel. War may be averted."));
+        scenes.get("S33_Diplomat").addChoice("talk", "enemy", "S39_PeaceEnding");
+        scenes.get("S33_Diplomat").addChoice("help", "allies", "S36_WarPrep");
+
+        add.apply(new Scene("S34_FlightMaster", "💨 Weightless Freedom",
+                "You let go of earthly attachment. Literally.\n" +
+                        "Gravity releases you. You FLY without aid.\n" +
+                        "True airbender enlightenment achieved."));
+        scenes.get("S34_FlightMaster").addChoice("attack", "enemy", "S35_FinalBattle");
+        scenes.get("S34_FlightMaster").addChoice("meditate", "", "S40_EnlightenmentEnding");
+
+        // ============ FINAL CONVERGENCE ============
+
+        add.apply(new Scene("S35_FinalBattle", "⚔️ War's End",
+                "The final confrontation. All your training leads here.\n" +
+                        "Elements clash. The world holds its breath.\n" +
+                        "Victory or death. There is no middle ground."));
+        scenes.get("S35_FinalBattle").addChoice("attack", "enemy", "S41_VictoryEnding");
+        scenes.get("S35_FinalBattle").addChoice("flee", "", "S42_DefeatEnding");
+
+        add.apply(new Scene("S36_WarPrep", "🛡️ Rally the Troops",
+                "Allies gather from all nations. Fire. Water. Earth. Air.\n" +
+                        "United, you prepare for the battle that will decide everything."));
+        scenes.get("S36_WarPrep").addChoice("attack", "enemy", "S35_FinalBattle");
+        scenes.get("S36_WarPrep").addChoice("talk", "enemy", "S39_PeaceEnding");
+
+        add.apply(new Scene("S37_Redemption", "💔 The Long Road Back",
+                "You've done terrible things. But it's not too late.\n" +
+                        "Redemption is hard. Painful. But possible.\n" +
+                        "The question is: do you deserve it?"));
+        scenes.get("S37_Redemption").addChoice("help", "village", "S33_Diplomat");
+        scenes.get("S37_Redemption").addChoice("meditate", "", "S24_AvatarState");
+
+        // ============ ENDINGS ============
+
+        add.apply(new Scene("S38_TyrantEnding", "💀 ENDING: Dark Lord",
+                "You rule through fear. Absolute power. Absolute control.\n" +
+                        "The world kneels, but calls you monster.\n" +
+                        "Was it worth it?\n\n" +
+                        "===== DARK LORD ENDING ====="));
+        scenes.get("S38_TyrantEnding").addChoice("restart", "game", "S01_Prologue");
+
+        add.apply(new Scene("S39_PeaceEnding", "🕊️ ENDING: The Peacemaker",
+                "Words triumphed over weapons. No blood spilled.\n" +
+                        "A new era begins. You are the bridge between nations.\n" +
+                        "History remembers you as the one who chose mercy.\n\n" +
+                        "===== PEACE ENDING ====="));
+        scenes.get("S39_PeaceEnding").addChoice("restart", "game", "S01_Prologue");
+
+        add.apply(new Scene("S40_EnlightenmentEnding", "✨ ENDING: Transcendence",
+                "You become more than human. A spirit. Eternal.\n" +
+                        "The Avatar Cycle ends and begins anew in you.\n" +
+                        "Mortal concerns fade. You are balance itself.\n\n" +
+                        "===== ENLIGHTENMENT ENDING ====="));
+        scenes.get("S40_EnlightenmentEnding").addChoice("restart", "game", "S01_Prologue");
+
+        add.apply(new Scene("S41_VictoryEnding", "⚔️ ENDING: Hero's Glory",
+                "You stand victorious. The enemy falls.\n" +
+                        "Songs will be sung. Statues will be raised.\n" +
+                        "But the scars remain. Heroes pay in blood.\n\n" +
+                        "===== VICTORY ENDING ====="));
+        scenes.get("S41_VictoryEnding").addChoice("restart", "game", "S01_Prologue");
+
+        add.apply(new Scene("S42_DefeatEnding", "💀 ENDING: Darkness Falls",
+                "You fall. The enemy wins. Hope dies.\n" +
+                        "Perhaps in another life...\n\n" +
+                        "===== DEFEAT ENDING ====="));
+        scenes.get("S42_DefeatEnding").addChoice("restart", "game", "S01_Prologue");
 
         return scenes;
     }

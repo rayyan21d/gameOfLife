@@ -2,6 +2,9 @@ package main;
 
 import main.Controller;
 
+/**
+ * It is the main manager that initializes the world class and connects the controller to the world
+ * **/
 public class Game {
 
     Controller controller;

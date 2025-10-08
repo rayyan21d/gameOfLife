@@ -3,14 +3,7 @@ package main;
 import java.util.*;
 
 /**
- * Builds canonical mappings for verbs and nouns (synonyms -> canonical token),
- * and populates an AlphabeticList (your binary tree) with Element objects for each canonical token.
- *
- * Usage:
- *   CommandDictionary dict = new CommandDictionary();
- *   dict.populateAlphabeticList(alphabeticList);
- *   String canonVerb = dict.canonicalizeVerb("run");
- *   String canonNoun = dict.canonicalizeNoun("the big gate");
+ * This is the dictionary for lookup and storing verbs and nouns
  */
 public class CommandDictionary {
     private final Map<String, String> verbCanon = new HashMap<>();
@@ -33,70 +26,102 @@ public class CommandDictionary {
     }
 
     private void buildVerbMap() {
-        addVerb("walk", "walk", "go", "move", "step");
-        addVerb("grab", "grab", "take", "pick", "get");
+        // Core movement
+        addVerb("walk", "walk", "go", "move", "step", "travel", "wander");
+        addVerb("flee", "flee", "run", "escape", "retreat");
+
+        // Interaction
+        addVerb("talk", "talk", "speak", "say", "discuss", "converse");
+        addVerb("help", "help", "aid", "assist", "support", "heal");
+
+        // Training & Development
+        addVerb("train", "train", "practice", "drill", "exercise");
+        addVerb("meditate", "meditate", "focus", "calm", "contemplate", "reflect");
+
+        // Combat
+        addVerb("attack", "attack", "hit", "strike", "fight", "battle");
+
+        // Learning
+        addVerb("read", "read", "study", "learn");
+        addVerb("inspect", "inspect", "look", "examine", "search", "investigate");
+
+        // Choices & Decisions
+        addVerb("choose", "choose", "select", "pick");
+
+        // Game control
+        addVerb("restart", "restart", "restartgame", "restart:game", "reset");
+
+        // Specialized (for backward compatibility if needed)
+        addVerb("grab", "grab", "take", "get");
         addVerb("climb", "climb", "ascend");
-        addVerb("talk", "talk", "speak", "say");
-        addVerb("meditate", "meditate", "focus", "calm");
         addVerb("bend", "bend", "use", "channel");
-        addVerb("inspect", "inspect", "look", "examine", "search");
-        addVerb("attack", "attack", "hit", "strike", "fight");
-        addVerb("flee", "flee", "run", "escape");
-        addVerb("help", "help", "aid", "assist");
-        addVerb("train", "train", "practice", "drill");
-        addVerb("read", "read", "study");
         addVerb("sneak", "sneak", "stealth");
-        addVerb("parley", "parley", "negotiate", "talk");
-        addVerb("choose", "choose", "select");
+        addVerb("parley", "parley", "negotiate");
         addVerb("accept", "accept", "agree");
-        addVerb("decline", "decline", "refuse");
-        addVerb("restart", "restart", "restartgame", "restart:game");
+        addVerb("decline", "decline", "refuse", "reject");
     }
 
     private void buildNounMap() {
-        addNoun("torch", "torch", "lamp");
-        addNoun("scroll", "scroll", "paper", "tome");
+        // Elements (CRITICAL - used at game start!)
+        addNoun("fire", "fire", "flame", "flames", "🔥");
+        addNoun("water", "water", "waves", "ocean", "💧");
+        addNoun("earth", "earth", "stone", "rock", "ground", "🌍");
+        addNoun("air", "air", "wind", "breeze", "💨");
+
+        // People
+        addNoun("mentor", "mentor", "master", "teacher", "elder", "guide");
+        addNoun("monk", "monk", "elder", "sage", "priest", "guardian");
+        addNoun("enemy", "enemy", "foe", "opponent", "general", "boss", "bandits", "thugs", "leader");
+        addNoun("allies", "allies", "friends", "companions", "army", "forces", "warriors");
+
+        // Places
+        addNoun("village", "village", "town", "home", "settlement");
+        addNoun("forest", "forest", "woods", "wilderness", "trees");
+        addNoun("ruins", "ruins", "remains", "temple", "shrine");
+
+        // Objects
+        addNoun("scroll", "scroll", "scrolls", "paper", "tome", "book", "text");
+        addNoun("torch", "torch", "lamp", "light");
         addNoun("statue", "statue", "idol");
-        addNoun("bridge", "bridge");
-        addNoun("monk", "monk", "elder");
         addNoun("gate", "gate", "door");
         addNoun("potion", "potion", "elixir");
-        addNoun("enemy", "enemy", "general", "boss");
-        addNoun("village", "village", "town");
-        addNoun("forest", "forest", "woods");
-        addNoun("ruins", "ruins", "remains");
-        addNoun("allies", "allies", "friends");
-        addNoun("scrolls", "scrolls", "ancient scrolls");
-        addNoun("mentor", "mentor", "master");
-        addNoun("element", "element");
-        addNoun("bender", "bender", "element");
+        addNoun("bridge", "bridge");
+
+        // Abstract concepts
+        addNoun("element", "element", "power", "energy");
+        addNoun("bender", "bender");
         addNoun("game", "game");
+
+        // Leave empty string for verb-only commands
+        addNoun("", "");
     }
 
+    // A function to convert verbs into canonical form
+    // this form acts as a state variable for internal representation
     public String canonicalizeVerb(String raw) {
         if (raw == null) return null;
         return verbCanon.getOrDefault(raw.trim().toLowerCase(), raw.trim().toLowerCase());
     }
 
     public String canonicalizeNoun(String raw) {
-        if (raw == null) return null;
+        if (raw == null || raw.trim().isEmpty()) return "";
         String cleaned = raw.trim().toLowerCase();
-        // Try whole noun first, then try last token guess (allow multi-word nouns)
+
+        // Try whole noun first
         if (nounCanon.containsKey(cleaned)) return nounCanon.get(cleaned);
-        // try last word
+
+        // Try multi-word matching (last word first)
         String[] parts = cleaned.split("\\s+");
         for (int i = parts.length - 1; i >= 0; i--) {
             String sub = String.join(" ", Arrays.copyOfRange(parts, i, parts.length));
             if (nounCanon.containsKey(sub)) return nounCanon.get(sub);
         }
-        // fallback to first token
+
+        // Fallback to first token
         return nounCanon.getOrDefault(parts[0], cleaned);
     }
 
-    /**
-     * Populate an AlphabeticList with Element objects for all canonical verbs and nouns.
-     * Assumes AlphabeticList.insert(Node) accepts nodes; uses Element.setIdentifier() to set id.
-     */
+    // This builds up the list which performs lookups
     public void populateAlphabeticList(AlphabeticList list) {
         Set<String> verbs = new HashSet<>(verbCanon.values());
         Set<String> nouns = new HashSet<>(nounCanon.values());
@@ -115,40 +140,17 @@ public class CommandDictionary {
         }
     }
 
-    /**
-     * Lookup an Element by canonical token in the provided AlphabeticList.
-     * Returns the Element if found, otherwise null.
-     */
+    // Search a word in the list/dictionary.
     public Element lookupInList(AlphabeticList list, String canonicalToken) {
-        if (canonicalToken == null) return null;
-        int id = sorter.Sort(canonicalToken);
-        Node cur = list.root; // your Node.root is public per earlier code
-        while (cur != null) {
-            if (id == cur.getID()) {
-                Element e = cur.getNodeElement();
-                if (e != null && canonicalToken.equals(e.getName())) return e;
-                // If name mismatch due to hash collision, search neighbors
-                // search left subtree
-                Element left = searchSubtreeForName(cur.left, canonicalToken);
-                if (left != null) return left;
-                Element right = searchSubtreeForName(cur.right, canonicalToken);
-                if (right != null) return right;
-                return cur.getNodeElement(); // best-effort
-            } else if (id < cur.getID()) {
-                cur = cur.left;
-            } else {
-                cur = cur.right;
-            }
-        }
-        return null;
-    }
+        if (canonicalToken == null || list == null) return null;
 
-    private Element searchSubtreeForName(Node node, String name) {
-        if (node == null) return null;
-        Element e = node.getNodeElement();
-        if (e != null && name.equals(e.getName())) return e;
-        Element left = searchSubtreeForName(node.left, name);
-        if (left != null) return left;
-        return searchSubtreeForName(node.right, name);
+        int id = sorter.Sort(canonicalToken);
+        Element result = list.findByIdAndName(id, canonicalToken);
+
+        if (result == null) {
+            result = list.findByName(canonicalToken);
+        }
+
+        return result;
     }
 }
